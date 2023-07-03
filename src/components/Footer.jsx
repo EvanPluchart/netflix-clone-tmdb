@@ -4,7 +4,7 @@ import {faFacebook, faInstagram, faTwitter, faYoutube} from "@fortawesome/free-b
 
 export default function Footer() {
     return (
-        <footer className="bg-black px-6 md:px-72 py-6 flex-col items-center justify-between space-y-6">
+        <footer className="hidden md:flex flex-col bg-black px-6 md:px-72 py-6 justify-between space-y-6">
             <div className="flex items-center space-x-6">
                 <FontAwesomeIcon
                     className='h-6 w-6 text-white hover:text-gray-300 cursor-pointer'
