@@ -6,7 +6,7 @@ import {faBell, faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
 
 export default function Navbar() {
     return (
-        <nav className="bg-black px-14 py-5 flex items-center justify-between">
+        <nav className="bg-black px-6 md:px-14 py-6 flex items-center justify-between">
 
             <div className={'flex space-x-12 items-center'}>
                 <div className="flex items-center">
