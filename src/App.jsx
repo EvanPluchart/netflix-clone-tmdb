@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import { Route, Switch } from "wouter";
 import Movies from "./routes/Movies.jsx";
+import Error from "./components/Error.jsx";
 
 export default function App() {
     return (
