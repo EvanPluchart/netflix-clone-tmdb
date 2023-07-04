@@ -1,4 +1,6 @@
 import React from 'react';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faAngleLeft, faAngleRight, faAnglesLeft, faAnglesRight} from "@fortawesome/free-solid-svg-icons";
 
 export default function Pagination({ currentPage, totalPages, onPageChange }) {
     const handleFirstPage = () => {
@@ -22,7 +24,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
     };
 
     return (
-        <div className="flex justify-center mt-4">
+        <div className="flex justify-center mt-4 pb-10 md:pb-0">
             <button
                 onClick={handleFirstPage}
                 disabled={currentPage === 1}
@@ -30,7 +32,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
                     currentPage === 1 ? 'disabled:opacity-50' : ''
                 }`}
             >
-                Première page
+                <FontAwesomeIcon icon={faAnglesLeft} />
             </button>
 
             <button
@@ -40,7 +42,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
                     currentPage === 1 ? 'disabled:opacity-50' : ''
                 }`}
             >
-                Précédent
+                <FontAwesomeIcon icon={faAngleLeft} />
             </button>
 
             <span className="text-white font-bold py-2 px-4 mr-2 rounded">
@@ -54,7 +56,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
                     currentPage === totalPages ? 'disabled:opacity-50' : ''
                 }`}
             >
-                Suivant
+                <FontAwesomeIcon icon={faAngleRight} />
             </button>
 
             <button
@@ -64,7 +66,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
                     currentPage === totalPages ? 'disabled:opacity-50' : ''
                 }`}
             >
-                Dernière page
+                <FontAwesomeIcon icon={faAnglesRight} />
             </button>
         </div>
     );
