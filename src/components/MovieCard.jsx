@@ -8,7 +8,7 @@ export default function MovieCard({ movie }) {
                 alt={movie.title}
                 className="w-32 rounded-lg shadow-lg"
             />
-            <h3 className={'w-32 text-white font-bold'}>{movie.title}</h3>
+            <h3 className={'w-32 text-white font-bold overflow-hidden text-ellipsis whitespace-nowrap'}>{movie.title}</h3>
         </div>
     );
 }
