@@ -3,31 +3,32 @@ import reactLogo from '../assets/react.svg'
 import netflixLogo from '../assets/netflix-logo.png'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faBell, faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
+import {Link} from "wouter";
 
 export default function Navbar() {
     return (
         <nav className="bg-zinc-900 px-6 md:px-14 py-6 flex items-center justify-between">
 
             <div className={'flex space-x-12 items-center'}>
-                <div className="flex items-center">
-                    <img src={netflixLogo} alt="Netflix logo" className="h-8" />
-                </div>
+                <Link className="flex items-center" href={'/'}>
+                    <img src={netflixLogo} alt="Netflix logo" className="h-8 cursor-pointer" />
+                </Link>
 
                 <ul className="hidden md:flex space-x-6">
                     <li>
-                        <a href="#" className="text-white hover:text-gray-300">
+                        <Link href="/" className="text-white hover:text-gray-300">
                             Accueil
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href="#" className="text-white hover:text-gray-300">
+                        <Link href="/series" className="text-white hover:text-gray-300">
                             Séries
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href="#" className="text-white hover:text-gray-300">
+                        <Link href="/films" className="text-white hover:text-gray-300">
                             Films
-                        </a>
+                        </Link>
                     </li>
                 </ul>
             </div>
