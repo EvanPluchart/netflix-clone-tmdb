@@ -4,8 +4,8 @@ import {faFacebook, faInstagram, faTwitter, faYoutube} from "@fortawesome/free-b
 
 export default function Footer() {
     return (
-        <footer className="hidden md:flex flex-col bg-zinc-900 px-6 md:px-72 py-6 justify-between space-y-6">
-            <div className="flex items-center space-x-6">
+        <footer className="hidden md:flex flex-col bg-zinc-900 px-6 md:px-72 py-6 space-y-6 pt-16 items-center">
+            <div className="flex items-start space-x-6">
                 <FontAwesomeIcon
                     className='h-6 w-6 text-white hover:text-gray-300 cursor-pointer'
                     icon={faFacebook}
@@ -51,7 +51,7 @@ export default function Footer() {
                 </ul>
             </div>
 
-            <div>
+            <div className='pb-6'>
                 <p className="text-gray-400 text-xs">© 1997-2021 Netflix, Inc.</p>
             </div>
         </footer>
