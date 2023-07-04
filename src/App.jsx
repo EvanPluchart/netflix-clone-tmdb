@@ -1,7 +1,7 @@
 import './App.css'
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
-import {Redirect, Route, Switch} from "wouter";
+import { Route, Switch } from "wouter";
 import Movies from "./routes/Movies.jsx";
 
 export default function App() {
@@ -11,7 +11,7 @@ export default function App() {
             <Switch>
                 <Route path={'/films/:sub*'} component={Movies} />
                 <Route path="/">
-                    <Redirect to="/films" />
+                    <h1>Accueil</h1>
                 </Route>
                 <Route component={Error} />
             </Switch>
