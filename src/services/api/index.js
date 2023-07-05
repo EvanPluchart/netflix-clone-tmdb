@@ -16,3 +16,10 @@ export function fetchMovieDetails(movieId) {
         .catch((error) => console.error(error));
 }
 
+export function fetchMovieCredits(movieId) {
+    return fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${API_KEY}&language=fr-FR`)
+        .then((response) => response.json())
+        .then((data) => data)
+        .catch((error) => console.error(error));
+}
+
