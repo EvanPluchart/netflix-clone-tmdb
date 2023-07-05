@@ -29,3 +29,10 @@ export function fetchMovieProviders(movieId) {
         .then((data) => data)
         .catch((error) => console.error(error));
 }
+
+export function fetchMovieVideos(movieId) {
+    return fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${API_KEY}&language=fr-FR`)
+        .then((response) => response.json())
+        .then((data) => data)
+        .catch((error) => console.error(error));
+}
