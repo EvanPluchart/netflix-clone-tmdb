@@ -36,7 +36,7 @@ export default function MovieDetails({ movie, cast, providers, videos }) {
 
                         <div className={'flex flex-col flex-1'}>
                             <div>
-                                <h3 className={'text-white font-bold text-4xl'}>{movie.title} <span className={'text-gray-500 font-normal'}>({year})</span></h3>
+                                <h3 className={'text-white font-bold text-4xl'}>{movie.title} <span className={'text-gray-400 font-normal'}>({year})</span></h3>
                                 <p className={'text-gray-400 text-md'}>{releaseDate} <span className={'font-bold'}>&middot;</span> {movie.genres.map((genre) => genre.name).join(', ')} <span className={'font-bold'}>&middot;</span> {movie.runtime} minutes</p>
                             </div>
 
@@ -63,32 +63,40 @@ export default function MovieDetails({ movie, cast, providers, videos }) {
                                             </div>
                                         </div>
 
+
                                         <div className={'flex flex-col gap-2'}>
                                             <h5 className={'text-white font-bold'}>Location</h5>
-                                            <div className="flex gap-2">
-                                                {providers.results.FR?.rent.map((provider) => (
-                                                    <img
-                                                        key={provider.provider_id}
-                                                        src={`https://image.tmdb.org/t/p/w500${provider.logo_path}`}
-                                                        alt={provider.provider_name}
-                                                        className="w-20 rounded-lg shadow-lg"
-                                                    />
-                                                ))}
-                                            </div>
+                                            {providers.results.FR.rent === undefined ? <p className={'text-gray-400'}>Aucune location</p> :
+                                                <>
+                                                <p>test</p>
+                                                <div className="flex gap-2">
+                                                     {providers.results.FR?.rent.map((provider) => (
+                                                         <img
+                                                             key={provider.provider_id}
+                                                             src={`https://image.tmdb.org/t/p/w500${provider.logo_path}`}
+                                                             alt={provider.provider_name}
+                                                             className="w-20 rounded-lg shadow-lg"
+                                                         />
+                                                     ))}
+                                                </div>
+                                                </>
+                                            }
                                         </div>
 
                                         <div className={'flex flex-col gap-2'}>
                                             <h5 className={'text-white font-bold'}>Achat</h5>
-                                            <div className="flex gap-2">
-                                                {providers.results.FR?.buy.map((provider) => (
-                                                    <img
-                                                        key={provider.provider_id}
-                                                        src={`https://image.tmdb.org/t/p/w500${provider.logo_path}`}
-                                                        alt={provider.provider_name}
-                                                        className="w-20 rounded-lg shadow-lg"
-                                                    />
-                                                ))}
-                                            </div>
+                                            {providers.results.FR.buy === undefined ? <p className={'text-gray-400'}>Aucun achat</p> :
+                                                <div className="flex gap-2">
+                                                    {providers.results.FR?.buy.map((provider) => (
+                                                        <img
+                                                            key={provider.provider_id}
+                                                            src={`https://image.tmdb.org/t/p/w500${provider.logo_path}`}
+                                                            alt={provider.provider_name}
+                                                            className="w-20 rounded-lg shadow-lg"
+                                                        />
+                                                    ))}
+                                                </div>
+                                            }
                                         </div>
                                     </div>
                                 }
@@ -99,7 +107,7 @@ export default function MovieDetails({ movie, cast, providers, videos }) {
                     <div className={'flex'}>
                         <div className={'flex flex-col flex-1 items-center'}>
                             <div>
-                                {videos.results.length === 0 ? <p className={'text-gray-400 text-md'}>Aucune bande annonce</p> :
+                                {videos === undefined || videos.results === undefined || videos.results.length === 0 ? <p className={'text-gray-400 text-md'}>Aucune bande annonce</p> :
                                     <div className={'flex flex-col gap-5'}>
                                         <h4 className={'text-white font-bold mt-5 text-3xl mb-3'}>Bande Annonce</h4>
                                         <iframe
