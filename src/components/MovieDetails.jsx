@@ -1,5 +1,7 @@
 import React from 'react';
 import Loading from "./Loading.jsx";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faChevronRight} from "@fortawesome/free-solid-svg-icons";
 
 export default function MovieDetails({ movie, cast, providers, videos }) {
     const date = new Date(movie.release_date);
@@ -95,20 +97,47 @@ export default function MovieDetails({ movie, cast, providers, videos }) {
                     </div>
 
                     <div className={'flex'}>
-                        <div className={'flex flex-col flex-1 justify-center items-center'}>
-                            {videos.results.length === 0 ? <p className={'text-gray-400 text-md'}>Aucune bande annonce</p> :
-                                <div className={'flex flex-col gap-5'}>
-                                    <h4 className={'text-white font-bold mt-5 text-3xl mb-3'}>Bande Annonce</h4>
-                                    <iframe
-                                        width="1024"
-                                        height="576"
-                                        src={`https://www.youtube.com/embed/${videos.results[0].key}`}
-                                        title="YouTube video player"
-                                        frameBorder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    />
+                        <div className={'flex flex-col flex-1 items-center'}>
+                            <div>
+                                {videos.results.length === 0 ? <p className={'text-gray-400 text-md'}>Aucune bande annonce</p> :
+                                    <div className={'flex flex-col gap-5'}>
+                                        <h4 className={'text-white font-bold mt-5 text-3xl mb-3'}>Bande Annonce</h4>
+                                        <iframe
+                                            width="960"
+                                            height="540"
+                                            src={`https://www.youtube.com/embed/${videos.results[0].key}`}
+                                            title="YouTube video player"
+                                            frameBorder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        />
+                                    </div>
+                                }
+                            </div>
+
+                            <div className={'flex flex-col gap-5'}>
+                                <h4 className={'text-white font-bold mt-5 text-3xl mb-3'}>Casting</h4>
+                                <div className={'flex gap-5'}>
+                                    {cast.cast.slice(0, 5).map((actor) => (
+                                        <div className={'flex flex-col items-center bg-zinc-800 w-fit rounded-lg gap-2 w-36'}>
+                                            <img
+                                                key={actor.id}
+                                                src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
+                                                alt={actor.name}
+                                                className="w-36 rounded-lg shadow-lg"
+                                            />
+                                            <div className={'flex flex-col items-center justify-center p-2'}>
+                                                <p className={'text-gray-400 text-center font-bold text-sm overflow-hidden text-ellipsis'}>{actor.name}</p>
+                                                <p className={'text-gray-400 text-center text-sm overflow-hidden text-ellipsis'}>{actor.character}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+
+                                    <div className={'flex gap-4 items-center justify-center font-bold text-white'}>
+                                        <span>Afficher plus</span>
+                                        <FontAwesomeIcon icon={faChevronRight} className={'text-white text-2xl'} />
+                                    </div>
                                 </div>
-                            }
+                            </div>
                         </div>
 
                         <aside className={'flex flex-col text-white h-fit gap-5'}>
