@@ -23,3 +23,9 @@ export function fetchMovieCredits(movieId) {
         .catch((error) => console.error(error));
 }
 
+export function fetchMovieProviders(movieId) {
+    return fetch(`https://api.themoviedb.org/3/movie/${movieId}/watch/providers?api_key=${API_KEY}`)
+        .then((response) => response.json())
+        .then((data) => data)
+        .catch((error) => console.error(error));
+}
