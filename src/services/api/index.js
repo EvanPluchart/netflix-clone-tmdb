@@ -11,8 +11,8 @@ export function fetchMovies(pageNumber) {
 
 export function fetchMovieDetails(movieId) {
     return fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=fr-FR`)
-        .then(response => response.json())
-        .then(response => console.log(response))
-        .catch(err => console.error(err));
+        .then((response) => response.json())
+        .then((data) => data)
+        .catch((error) => console.error(error));
 }
 
