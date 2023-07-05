@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Switch, useLocation, useRoute } from "wouter";
 import MovieList from "../components/MovieList.jsx";
-import { fetchMovieCredits, fetchMovieDetails } from "../services/api/index.js";
+import {fetchMovieCredits, fetchMovieDetails, fetchMovieProviders} from "../services/api/index.js";
 import Loading from "../components/Loading.jsx";
 import MovieDetails from "../components/MovieDetails.jsx";
 
@@ -9,6 +9,7 @@ export default function Movies() {
     const [match, { movieId }] = useRoute('/films/:movieId?');
     const [movie, setMovie] = useState(undefined);
     const [cast, setCast] = useState(undefined);
+    const [providers, setProviders] = useState(undefined);
     const [location, setLocation] = useLocation();
 
     useEffect(() => {
@@ -21,6 +22,10 @@ export default function Movies() {
             fetchMovieCredits(movieId).then((data) => {
                 setCast(data);
             });
+
+            fetchMovieProviders(movieId).then((data) => {
+                setProviders(data);
+            });
         }
     }, [movieId]);
 
@@ -30,8 +35,7 @@ export default function Movies() {
         }
     }, [movie]);
 
-    console.log('movie', movie)
-    console.log('cast', cast)
+
 
     return (
         <Switch>
@@ -44,7 +48,7 @@ export default function Movies() {
                     <Loading />
                     </>
                 ) : (
-                    <MovieDetails movie={movie} cast={cast} />
+                    <MovieDetails movie={movie} cast={cast} providers={providers} />
                 )}
             </Route>
 
