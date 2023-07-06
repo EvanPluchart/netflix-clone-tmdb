@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@media (max-width: 767px) {
+    .castScroller {
+        overflow-y: hidden;
+        overflow-x: scroll;
+        margin-left: -10px;
+        margin-top: -10px;
+        padding-bottom: 10px;
+        list-style-type: none;
+        list-style-position: inside;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+}

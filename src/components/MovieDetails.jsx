@@ -23,7 +23,7 @@ export default function MovieDetails({ movie, cast, providers, videos }) {
         <div className={'flex px-10 md:px-20 gap-5 flex-col'}>
             {providers === undefined || cast === undefined || movie === undefined ? ( <Loading></Loading>) : (
                 <>
-                    <div className={'flex gap-10 flex-col md:flex-row'}>
+                    <div className={'flex gap-10 flex-col xl:flex-row'}>
 
 
                         <div className={'flex-2'}>
@@ -103,35 +103,33 @@ export default function MovieDetails({ movie, cast, providers, videos }) {
                         </div>
                     </div>
 
-                    <div className={'flex'}>
+                    <div className={'flex flex-col md:flex-row'}>
                         <div className={'flex flex-col flex-1 items-center'}>
-                            <div>
-                                {videos === undefined || videos.results === undefined || videos.results.length === 0 ? <p className={'text-gray-400 text-md'}>Aucune bande annonce</p> :
-                                    <div className={'flex flex-col gap-5'}>
-                                        <h4 className={'text-white font-bold mt-5 text-3xl mb-3'}>Bande Annonce</h4>
-                                        <iframe
-                                            width="960"
-                                            height="540"
-                                            src={`https://www.youtube.com/embed/${videos.results[0].key}`}
-                                            title="YouTube video player"
-                                            frameBorder="0"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                            className={'w-full m-w-full h-auto'}
-                                        />
-                                    </div>
-                                }
-                            </div>
+                            {/*<div>*/}
+                            {/*    {videos === undefined || videos.results === undefined || videos.results.length === 0 ? <p className={'text-gray-400 text-md'}>Aucune bande annonce</p> :*/}
+                            {/*        <div className={'flex flex-col gap-5'}>*/}
+                            {/*            <h4 className={'text-white font-bold mt-5 text-3xl mb-3'}>Bande Annonce</h4>*/}
+                            {/*            <iframe*/}
+                            {/*                width="960"*/}
+                            {/*                height="540"*/}
+                            {/*                src={`https://www.youtube.com/embed/${videos.results[0].key}`}*/}
+                            {/*                title="YouTube video player"*/}
+                            {/*                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"*/}
+                            {/*            />*/}
+                            {/*        </div>*/}
+                            {/*    }*/}
+                            {/*</div>*/}
 
-                            <div className={'flex flex-col gap-5'}>
+                            <div className={'flex flex-col gap-5 w-full castScroller'}>
                                 <h4 className={'text-white font-bold mt-5 text-3xl mb-3'}>Casting</h4>
                                 <div className={'flex gap-5'}>
                                     {cast.cast.slice(0, 5).map((actor) => (
-                                        <div className={'flex flex-col items-center bg-zinc-800 w-fit rounded-lg gap-2 w-36'}>
+                                        <div className={'flex flex-col items-center bg-zinc-800 w-fit rounded-lg gap-2 w-28'}>
                                             <img
                                                 key={actor.id}
                                                 src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
                                                 alt={actor.name}
-                                                className="w-36 rounded-lg shadow-lg"
+                                                className="w-full rounded-lg shadow-lg"
                                             />
                                             <div className={'flex flex-col items-center justify-center p-2'}>
                                                 <p className={'text-gray-400 text-center font-bold text-sm overflow-hidden text-ellipsis'}>{actor.name}</p>
