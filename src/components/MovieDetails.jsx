@@ -20,10 +20,10 @@ export default function MovieDetails({ movie, cast, providers, videos }) {
 
     return (
 
-        <div className={'flex px-20 gap-5 flex-col'}>
+        <div className={'flex px-10 md:px-20 gap-5 flex-col'}>
             {providers === undefined || cast === undefined || movie === undefined ? ( <Loading></Loading>) : (
                 <>
-                    <div className={'flex gap-10'}>
+                    <div className={'flex gap-10 flex-col md:flex-row'}>
 
 
                         <div className={'flex-2'}>
@@ -36,28 +36,28 @@ export default function MovieDetails({ movie, cast, providers, videos }) {
 
                         <div className={'flex flex-col flex-1'}>
                             <div>
-                                <h3 className={'text-white font-bold text-4xl'}>{movie.title} <span className={'text-gray-400 font-normal'}>({year})</span></h3>
+                                <h3 className={'text-white font-bold text-2xl md:text-4xl'}>{movie.title} <span className={'text-gray-400 font-normal'}>({year})</span></h3>
                                 <p className={'text-gray-400 text-md'}>{releaseDate} <span className={'font-bold'}>&middot;</span> {movie.genres.map((genre) => genre.name).join(', ')} <span className={'font-bold'}>&middot;</span> {movie.runtime} minutes</p>
                             </div>
 
                             <div>
-                                <h4 className={'text-white font-bold mt-5 text-3xl mb-3'}>Synopsis</h4>
-                                <p className={'text-gray-400 text-md'}>{movie.overview}</p>
+                                <h4 className={'text-white font-bold mt-5 text-xl md:text-3xl mb-3'}>Synopsis</h4>
+                                <p className={'text-gray-400 text-sm md:text-md'}>{movie.overview}</p>
                             </div>
 
                             <div>
-                                <h4 className={'text-white font-bold mt-5 text-3xl mb-3'}>Regarder sur</h4>
+                                <h4 className={'text-white font-bold mt-5 text-xl md:text-3xl mb-3'}>Regarder sur</h4>
                                 {!providers.results.FR ? <p className={'text-gray-400 text-md'}>Aucun résultat</p> :
                                     <div className={'flex flex-col gap-5'}>
                                         <div className={'flex flex-col gap-2'}>
                                             <h5 className={'text-white font-bold'}>Abonnement</h5>
-                                            <div className={'flex gap-2'}>
+                                            <div className={'flex gap-2 flex-wrap'}>
                                                 {providers.results.FR?.flatrate.map((provider) => (
                                                     <img
                                                         key={provider.provider_id}
                                                         src={`https://image.tmdb.org/t/p/w500${provider.logo_path}`}
                                                         alt={provider.provider_name}
-                                                        className="w-20 rounded-lg shadow-lg"
+                                                        className="w-10 md:w-20 rounded-lg shadow-lg"
                                                     />
                                                 ))}
                                             </div>
@@ -68,14 +68,13 @@ export default function MovieDetails({ movie, cast, providers, videos }) {
                                             <h5 className={'text-white font-bold'}>Location</h5>
                                             {providers.results.FR.rent === undefined ? <p className={'text-gray-400'}>Aucune location</p> :
                                                 <>
-                                                <p>test</p>
-                                                <div className="flex gap-2">
+                                                <div className="flex gap-2 flex-wrap">
                                                      {providers.results.FR?.rent.map((provider) => (
                                                          <img
                                                              key={provider.provider_id}
                                                              src={`https://image.tmdb.org/t/p/w500${provider.logo_path}`}
                                                              alt={provider.provider_name}
-                                                             className="w-20 rounded-lg shadow-lg"
+                                                             className="w-10 md:w-20 rounded-lg shadow-lg"
                                                          />
                                                      ))}
                                                 </div>
@@ -86,13 +85,13 @@ export default function MovieDetails({ movie, cast, providers, videos }) {
                                         <div className={'flex flex-col gap-2'}>
                                             <h5 className={'text-white font-bold'}>Achat</h5>
                                             {providers.results.FR.buy === undefined ? <p className={'text-gray-400'}>Aucun achat</p> :
-                                                <div className="flex gap-2">
+                                                <div className="flex gap-2 flex-wrap">
                                                     {providers.results.FR?.buy.map((provider) => (
                                                         <img
                                                             key={provider.provider_id}
                                                             src={`https://image.tmdb.org/t/p/w500${provider.logo_path}`}
                                                             alt={provider.provider_name}
-                                                            className="w-20 rounded-lg shadow-lg"
+                                                            className="w-10 md:w-20 rounded-lg shadow-lg"
                                                         />
                                                     ))}
                                                 </div>
@@ -117,6 +116,7 @@ export default function MovieDetails({ movie, cast, providers, videos }) {
                                             title="YouTube video player"
                                             frameBorder="0"
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            className={'w-full m-w-full h-auto'}
                                         />
                                     </div>
                                 }
