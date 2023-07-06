@@ -7,7 +7,7 @@ import {Link} from "wouter";
 
 export default function Navbar() {
     return (
-        <nav className="bg-zinc-900 px-6 md:px-14 py-6 flex flex-col md:flex-row items-center justify-between gap-4 fixed w-full">
+        <nav className="bg-zinc-900 px-6 md:px-14 py-6 flex flex-col md:flex-row items-center justify-between gap-4 sticky top-0 w-full">
 
             <div className={'flex space-x-12 items-center justify-between w-full'}>
                 <div className={'flex space-x-12 items-center'}>
