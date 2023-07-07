@@ -8,8 +8,8 @@ export default function CastingScroller({ cast, movieId }) {
     return (
         <div className={'flex flex-col gap-5 w-full'}>
             <h4 className={'text-white font-bold mt-5 text-3xl mb-3'}>Casting</h4>
-            <div className={'flex gap-7 castScroller md:px-20'}>
-                {cast.cast.slice(0, 5).map((actor) => (
+            <div className={'flex gap-7 castScroller md:px-20 w-full'}>
+                {cast.cast.slice(0, 15).map((actor) => (
                     <CastingCard actor={actor} />
                 ))}
 
