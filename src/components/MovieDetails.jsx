@@ -57,7 +57,7 @@ export default function MovieDetails({ movie, cast, providers, videos }) {
                                                         key={provider.provider_id}
                                                         src={`https://image.tmdb.org/t/p/w500${provider.logo_path}`}
                                                         alt={provider.provider_name}
-                                                        className="w-10 md:w-20 rounded-lg shadow-lg"
+                                                        className="w-10 rounded-lg shadow-lg"
                                                     />
                                                 ))}
                                             </div>
@@ -74,7 +74,7 @@ export default function MovieDetails({ movie, cast, providers, videos }) {
                                                              key={provider.provider_id}
                                                              src={`https://image.tmdb.org/t/p/w500${provider.logo_path}`}
                                                              alt={provider.provider_name}
-                                                             className="w-10 md:w-20 rounded-lg shadow-lg"
+                                                             className="w-10 rounded-lg shadow-lg"
                                                          />
                                                      ))}
                                                 </div>
@@ -91,7 +91,7 @@ export default function MovieDetails({ movie, cast, providers, videos }) {
                                                             key={provider.provider_id}
                                                             src={`https://image.tmdb.org/t/p/w500${provider.logo_path}`}
                                                             alt={provider.provider_name}
-                                                            className="w-10 md:w-20 rounded-lg shadow-lg"
+                                                            className="w-10 rounded-lg shadow-lg"
                                                         />
                                                     ))}
                                                 </div>
@@ -120,18 +120,18 @@ export default function MovieDetails({ movie, cast, providers, videos }) {
                             {/*    }*/}
                             {/*</div>*/}
 
-                            <div className={'flex flex-col gap-5 w-full castScroller'}>
+                            <div className={'flex flex-col gap-5 w-full'}>
                                 <h4 className={'text-white font-bold mt-5 text-3xl mb-3'}>Casting</h4>
-                                <div className={'flex gap-5'}>
+                                <div className={'flex gap-5 castScroller'}>
                                     {cast.cast.slice(0, 5).map((actor) => (
-                                        <div className={'flex flex-col items-center bg-zinc-800 w-fit rounded-lg gap-2 w-28'}>
+                                        <div key={actor.id + actor.name} className={'flex flex-col items-center bg-zinc-800 rounded-lg gap-2'}>
                                             <img
                                                 key={actor.id}
                                                 src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
                                                 alt={actor.name}
                                                 className="w-full rounded-lg shadow-lg"
                                             />
-                                            <div className={'flex flex-col items-center justify-center p-2'}>
+                                            <div className={'w-32 flex flex-col items-center justify-center p-2'}>
                                                 <p className={'text-gray-400 text-center font-bold text-sm overflow-hidden text-ellipsis'}>{actor.name}</p>
                                                 <p className={'text-gray-400 text-center text-sm overflow-hidden text-ellipsis'}>{actor.character}</p>
                                             </div>
