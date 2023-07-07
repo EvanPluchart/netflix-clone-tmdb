@@ -1,7 +1,5 @@
 import React from 'react';
 import Loading from "./Loading.jsx";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faChevronRight} from "@fortawesome/free-solid-svg-icons";
 import CastingScroller from "./CastingScroller.jsx";
 import TrailerVideo from "./TrailerVideo.jsx";
 import ViewProviders from "./ViewProviders.jsx";
@@ -14,12 +12,6 @@ export default function MovieDetails({ movie, cast, providers, videos }) {
     const formattedDay = day < 10 ? `0${day}` : day;
     const formattedMont = month < 10 ? `0${month}` : month;
     const releaseDate = `${formattedDay}/${formattedMont}/${year}`;
-
-    if (videos !== undefined) {
-        console.log(videos);
-    }
-
-    console.log(movie)
 
     return (
 
