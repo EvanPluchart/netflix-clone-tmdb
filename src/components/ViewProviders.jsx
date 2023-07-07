@@ -8,16 +8,20 @@ export default function ViewProviders({ providers }) {
                 <div className={'flex flex-col gap-5'}>
                     <div className={'flex flex-col gap-2'}>
                         <h5 className={'text-white font-bold'}>Abonnement</h5>
-                        <div className={'flex gap-2 flex-wrap'}>
-                            {providers.results.FR?.flatrate.map((provider) => (
-                                <img
-                                    key={provider.provider_id}
-                                    src={`https://image.tmdb.org/t/p/w500${provider.logo_path}`}
-                                    alt={provider.provider_name}
-                                    className="w-10 rounded-lg shadow-lg"
-                                />
-                            ))}
-                        </div>
+                        {providers.results.FR.flatrate === undefined ? <p className={'text-gray-400'}>Aucun abonnement</p> :
+                            <>
+                                <div className={'flex gap-2 flex-wrap'}>
+                                    {providers.results.FR?.flatrate.map((provider) => (
+                                        <img
+                                            key={provider.provider_id}
+                                            src={`https://image.tmdb.org/t/p/w500${provider.logo_path}`}
+                                            alt={provider.provider_name}
+                                            className="w-10 rounded-lg shadow-lg"
+                                        />
+                                    ))}
+                                </div>
+                            </>
+                        }
                     </div>
 
 
