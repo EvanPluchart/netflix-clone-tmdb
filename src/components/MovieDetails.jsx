@@ -44,8 +44,8 @@ export default function MovieDetails({ movie, cast, providers, videos }) {
                         </div>
                     </div>
 
-                    <div className={'flex flex-col xl:flex-row'}>
-                        <div className={'flex flex-col flex-1 items-center'}>
+                    <div className={'flex flex-col w-full'}>
+                        <div className={'flex flex-col flex-1 items-center w-full'}>
                             <TrailerVideo videos={videos} />
                             <CastingScroller cast={cast} movieId={movie.id} />
                         </div>
