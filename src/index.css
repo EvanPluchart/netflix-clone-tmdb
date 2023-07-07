@@ -4,6 +4,7 @@
 
 @media (max-width: 767px) {
     .castScroller {
+        -webkit-overflow-scrolling: touch;
         overflow-y: hidden;
         overflow-x: scroll;
         margin-left: -10px;
