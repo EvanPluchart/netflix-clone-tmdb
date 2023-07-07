@@ -3,6 +3,7 @@ import Loading from "./Loading.jsx";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faChevronRight} from "@fortawesome/free-solid-svg-icons";
 import CastingScroller from "./CastingScroller.jsx";
+import TrailerVideo from "./TrailerVideo.jsx";
 
 export default function MovieDetails({ movie, cast, providers, videos }) {
     const date = new Date(movie.release_date);
@@ -106,22 +107,8 @@ export default function MovieDetails({ movie, cast, providers, videos }) {
 
                     <div className={'flex flex-col xl:flex-row'}>
                         <div className={'flex flex-col flex-1 items-center'}>
-                            <div>
-                                {videos === undefined || videos.results === undefined || videos.results.length === 0 ? <p className={'text-gray-400 text-md'}>Aucune bande annonce</p> :
-                                    <div className={'flex flex-col gap-5'}>
-                                        <h4 className={'text-white font-bold mt-5 text-3xl mb-3'}>Bande Annonce</h4>
-                                        <iframe
-                                            className={'aspect-video'}
-                                            src={`https://www.youtube.com/embed/${videos.results[0].key}`}
-                                            title="YouTube video player"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        />
-                                    </div>
-                                }
-                            </div>
-
+                            <TrailerVideo videos={videos} />
                             <CastingScroller cast={cast} />
-
                         </div>
 
                         <aside className={'flex flex-col text-white h-fit gap-5 mb-10 md:mb-0'}>
