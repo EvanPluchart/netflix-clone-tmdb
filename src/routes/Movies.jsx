@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Switch, useLocation, useRoute } from "wouter";
 import MovieList from "../components/MovieList.jsx";
-import {fetchMovieCredits, fetchMovieDetails, fetchMovieProviders, fetchMovieVideos} from "../services/api/movie.js";
+import {
+    fetchDiscoverMovies,
+    fetchMovieCredits,
+    fetchMovieDetails,
+    fetchMovieProviders,
+    fetchMovieVideos
+} from "../services/api/movie.js";
 import Loading from "../components/Loading.jsx";
 import MovieDetails from "../components/MovieDetails.jsx";
 
@@ -15,7 +21,14 @@ export default function Movies() {
 
     useEffect(() => {
         setMovie(undefined);
-        if (movieId !== undefined && Number.isInteger(Number(movieId))) {
+        if (movieId !== undefined && movieId === 'decouvrir') {
+            fetchDiscoverMovies(Math.floor(Math.random() * 500)).then((movies) => {
+                const movie = movies[Math.floor(Math.random() * movies.length)];
+                setMovie(movie);
+                console.log(movie)
+                setLocation('/films/' + movie.id)
+            });
+        } else if (movieId !== undefined && Number.isInteger(Number(movieId))) {
             fetchMovieDetails(movieId).then((data) => {
                 setMovie(data);
             });
