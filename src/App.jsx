@@ -5,6 +5,7 @@ import { Route, Switch } from "wouter";
 import Movies from "./routes/Movies.jsx";
 import Error from "./components/Error.jsx";
 import Castings from "./routes/Castings.jsx";
+import Tvshows from "./routes/Tvshows.jsx";
 
 export default function App() {
     return (
@@ -12,6 +13,7 @@ export default function App() {
             <Navbar />
             <Switch>
                 <Route path={'/films/:sub*'} component={Movies} />
+                <Route path={'/series/:sub*'} component={Tvshows} />
                 <Route path={'/casting/:sub*'} component={Castings} />
                 <Route path="/">
                     <h1>Accueil</h1>
