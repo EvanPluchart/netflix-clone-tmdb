@@ -17,11 +17,11 @@ export default function App() {
     const [tvShows, setTvShows] = useState([]);
 
     useEffect(() => {
-        fetchMovies(1).then((movies) => {
+        fetchMovies(Math.floor(Math.random() * 500)).then((movies) => {
             setMovies(movies);
         });
 
-        fetchTvshows(1).then((tvShows) => {
+        fetchTvshows(Math.floor(Math.random() * 500)).then((tvShows) => {
             setTvShows(tvShows);
         });
     }, []);
