@@ -6,7 +6,6 @@ import Movies from "./routes/Movies.jsx";
 import Error from "./components/Error.jsx";
 import Castings from "./routes/Castings.jsx";
 import Tvshows from "./routes/Tvshows.jsx";
-import Carousel from "./components/Carousel.jsx";
 import React, {useEffect, useState} from "react";
 import {fetchMovies} from "./services/api/movie.js";
 import MovieCard from "./components/MovieCard.jsx";
@@ -25,7 +24,7 @@ export default function App() {
         fetchTvshows(1).then((tvShows) => {
             setTvShows(tvShows);
         });
-    });
+    }, []);
 
     return (
         <main className='App bg-zinc-900'>
@@ -73,6 +72,35 @@ export default function App() {
                                 </div>
                             </div>
                         </div>
+
+                        <div className={'flex flex-col gap-4 mb-20 md:mb-0'}>
+                            <div>
+                                <h1 className={'font-bold text-xl text-white'}>Découvrir</h1>
+                                <p className={'text-md text-white'}>
+                                    Vous ne savez pas quoi regarder ? Laissez-vous guider par nos suggestions de films et séries.
+                                </p>
+                            </div>
+
+                            <div className="flex justify-between flex-col gap-4 md:flex-row">
+                                <Link
+                                    href={'/films/decouvrir'}
+                                    className={`bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 mr-2 rounded w-full text-center`}
+                                >
+                                    Découvrir un film
+                                </Link>
+                                <Link
+                                    href={'/series/decouvrir'}
+                                    className={`bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 mr-2 rounded w-full text-center`}
+                                >
+                                    Découvrir une serie
+                                </Link>
+                            </div>
+
+
+
+                        </div>
+
+
                     </div>
                 </Route>
                 <Route component={Error} />
