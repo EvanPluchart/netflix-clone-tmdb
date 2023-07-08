@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Switch, useLocation, useRoute } from "wouter";
 import MovieList from "../components/MovieList.jsx";
-import {fetchMovieCredits, fetchMovieDetails, fetchMovieProviders, fetchMovieVideos} from "../services/api/index.js";
+import {fetchMovieCredits, fetchMovieDetails, fetchMovieProviders, fetchMovieVideos} from "../services/api/movie.js";
 import Loading from "../components/Loading.jsx";
 import MovieDetails from "../components/MovieDetails.jsx";
 

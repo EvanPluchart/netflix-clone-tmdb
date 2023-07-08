@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { fetchMovies } from '../services/api/index';
+import { fetchMovies } from '../services/api/movie.js';
 import MovieCard from './MovieCard';
 import Pagination from "./Pagination.jsx";
 
