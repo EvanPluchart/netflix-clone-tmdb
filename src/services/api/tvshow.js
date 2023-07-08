@@ -36,3 +36,12 @@ export function fetchTvshowVideos(showId) {
         .then((data) => data)
         .catch((error) => console.error(error));
 }
+
+export function fetchDiscoverTvshows(pageNumber) {
+    return fetch(
+        `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&page=${pageNumber}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false`
+    )
+        .then((response) => response.json())
+        .then((data) => data.results)
+        .catch((error) => console.error(error));
+}

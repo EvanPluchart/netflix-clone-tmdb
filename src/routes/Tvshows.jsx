@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Route, Switch, useLocation, useRoute } from "wouter";
 import Loading from "../components/Loading.jsx";
 import {
+    fetchDiscoverTvshows,
     fetchTvshowCredits,
     fetchTvshowDetails,
     fetchTvshowProviders,
@@ -9,6 +10,7 @@ import {
 } from "../services/api/tvshow.js";
 import TvshowList from "../components/TvshowList.jsx";
 import TvshowDetails from "../components/TvshowDetails.jsx";
+import {fetchDiscoverMovies} from "../services/api/movie.js";
 
 export default function Tvshows() {
     const [match, { tvshowId }] = useRoute('/series/:tvshowId?');
@@ -20,7 +22,13 @@ export default function Tvshows() {
 
     useEffect(() => {
         setTvshow(undefined);
-        if (tvshowId !== undefined && Number.isInteger(Number(tvshowId))) {
+        if (tvshowId !== undefined && tvshowId === 'decouvrir') {
+            fetchDiscoverTvshows(Math.floor(Math.random() * 500)).then((tvshows) => {
+                const tvshow = tvshows[Math.floor(Math.random() * tvshows.length)];
+                setTvshow(tvshow);
+                setLocation('/series/' + tvshow.id)
+            });
+        } else if (tvshowId !== undefined && Number.isInteger(Number(tvshowId))) {
             fetchTvshowDetails(tvshowId).then((data) => {
                 setTvshow(data);
             });
