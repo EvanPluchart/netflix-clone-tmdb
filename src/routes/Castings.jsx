@@ -1,24 +1,33 @@
 import React, {useEffect, useState} from 'react';
 import {Route, Switch, useLocation, useRoute} from "wouter";
 import Loading from "../components/Loading.jsx";
-import {fetchMovieCredits, fetchMovieDetails, fetchMovieProviders, fetchMovieVideos} from "../services/api/index.js";
-import AnonymousAvatar from "../assets/anonymous-avatar.jpg";
+import {fetchMovieCredits} from "../services/api/movie.js";
 import ShowCastingDetail from "../components/ShowCastingDetail.jsx";
+import {fetchTvshowCredits} from "../services/api/tvshow.js";
 
 export default function Castings() {
-    const [match, { movieId }] = useRoute('/casting/:movieId?');
+    const [match, { id }] = useRoute('/casting/:id?');
     const [casting, setCasting] = useState(undefined);
     const [location, setLocation] = useLocation();
 
     useEffect(() => {
         setCasting(undefined);
-        if (movieId !== undefined && Number.isInteger(Number(movieId))) {
-            fetchMovieCredits(movieId).then((data) => {
-                setCasting(data);
-                console.log(data);
+        if (id !== undefined && Number.isInteger(Number(id))) {
+            fetchMovieCredits(id).then((data) => {
+                if (data.success === false) {
+                    fetchTvshowCredits(id).then((data2) => {
+                        setCasting(data2);
+
+                    });
+                } else {
+                    setCasting(data);
+
+                }
             });
+
+
         }
-    }, [movieId]);
+    }, [id]);
 
     useEffect(() => {
         if (casting === null) {
@@ -28,7 +37,7 @@ export default function Castings() {
 
     return (
         <Switch>
-            <Route path={'/casting/:movieId'}>
+            <Route path={'/casting/:id'}>
                 {casting === undefined ? (
                     <Loading />
                 ) : (
@@ -37,7 +46,7 @@ export default function Castings() {
             </Route>
 
             <Route>
-                <h1>hey test</h1>
+                <ShowCastingDetail casting={casting} />
             </Route>
         </Switch>
     );
