@@ -11,6 +11,7 @@ import {fetchMovies} from "./services/api/movie.js";
 import MovieCard from "./components/MovieCard.jsx";
 import {fetchTvshows} from "./services/api/tvshow.js";
 import TvshowCard from "./components/TvshowCard.jsx";
+import Search from "./routes/Search.jsx";
 
 export default function App() {
     const [movies, setMovies] = useState([]);
@@ -33,6 +34,7 @@ export default function App() {
                 <Route path={'/films/:sub*'} component={Movies} />
                 <Route path={'/series/:sub*'} component={Tvshows} />
                 <Route path={'/casting/:sub*'} component={Castings} />
+                <Route path={'/recherche/:sub*'} component={Search} />
                 <Route path="/">
                     <div className={'md:px-60 px-10 flex flex-col gap-10'}>
                         <div>
