@@ -21,34 +21,36 @@ export default function Movies() {
 
     useEffect(() => {
         setMovie(undefined);
-        if (movieId !== undefined && movieId === 'decouvrir') {
-            fetchDiscoverMovies(Math.floor(Math.random() * 500)).then((movies) => {
-                const movie = movies[Math.floor(Math.random() * movies.length)];
-                setMovie(movie);
-                console.log(movie)
-                setLocation('/films/' + movie.id)
-            });
-        } else if (movieId !== undefined && Number.isInteger(Number(movieId))) {
-            fetchMovieDetails(movieId).then((data) => {
-                setMovie(data);
-            });
+        if (movieId !== undefined) {
+            if (movieId === 'decouvrir') {
+                fetchDiscoverMovies(Math.floor(Math.random() * 500)).then((movies) => {
+                    const movie = movies[Math.floor(Math.random() * movies.length)];
+                    setMovie(movie);
+                    setLocation('/films/' + movie.id)
+                });
+            } else if (Number.isInteger(Number(movieId))) {
+                fetchMovieDetails(movieId).then((data) => {
+                    setMovie(data);
+                });
 
-            fetchMovieCredits(movieId).then((data) => {
-                setCast(data);
-            });
+                fetchMovieCredits(movieId).then((data) => {
+                    setCast(data);
+                });
 
-            fetchMovieProviders(movieId).then((data) => {
-                setProviders(data);
-            });
+                fetchMovieProviders(movieId).then((data) => {
+                    setProviders(data);
+                });
 
-            fetchMovieVideos(movieId).then((data) => {
-                setVideos(data);
-            });
+                fetchMovieVideos(movieId).then((data) => {
+                    setVideos(data);
+                });
+            }
         }
     }, [movieId]);
 
+
     useEffect(() => {
-        if (movie === null) {
+        if (movie === null && movieId !== undefined) {
             setLocation("/films");
         }
     }, [movie]);

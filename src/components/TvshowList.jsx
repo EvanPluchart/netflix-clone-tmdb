@@ -3,15 +3,19 @@ import Pagination from "./Pagination.jsx";
 import {fetchTvshows} from "../services/api/tvshow.js";
 import TvshowCard from "./TvshowCard.jsx";
 
-export default function TvshowList() {
+export default function TvshowList(tvshows = undefined) {
     const [tvShows, setTvShows] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const totalPages = 500;
 
     useEffect(() => {
-        fetchTvshows(currentPage).then((tvShows) => {
-            setTvShows(tvShows);
-        });
+        if (tvshows.tvshows === undefined) {
+            fetchTvshows(currentPage).then((tvShows) => {
+                setTvShows(tvShows);
+            });
+        } else {
+            setTvShows(tvshows.tvshows);
+        }
     }, [currentPage]);
 
     const handlePageChange = (pageNumber) => {
@@ -28,11 +32,13 @@ export default function TvshowList() {
                 </div>
             </div>
 
-            <Pagination
-                currentPage={currentPage}
-                totalPages={totalPages}
-                onPageChange={handlePageChange}
-            />
+            {tvshows.tvshows === undefined && (
+                <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={handlePageChange}
+                />
+            )}
         </>
     );
 }

@@ -2,16 +2,22 @@ import React, { useEffect, useState } from 'react';
 import { fetchMovies } from '../services/api/movie.js';
 import MovieCard from './MovieCard';
 import Pagination from "./Pagination.jsx";
+import {fetchTvshows} from "../services/api/tvshow.js";
 
-export default function MovieList() {
+export default function MovieList(moviesl = undefined) {
     const [movies, setMovies] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const totalPages = 500;
 
     useEffect(() => {
-        fetchMovies(currentPage).then((movies) => {
-            setMovies(movies);
-        });
+
+        if (moviesl.movies === undefined) {
+            fetchMovies(currentPage).then((movies) => {
+                setMovies(movies);
+            });
+        } else {
+            setMovies(moviesl.movies);
+        }
     }, [currentPage]);
 
     const handlePageChange = (pageNumber) => {
@@ -28,11 +34,13 @@ export default function MovieList() {
                 </div>
             </div>
 
-            <Pagination
-                currentPage={currentPage}
-                totalPages={totalPages}
-                onPageChange={handlePageChange}
-            />
+            {moviesl.movies === undefined && (
+                <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={handlePageChange}
+                />
+            )}
         </>
     );
 }
