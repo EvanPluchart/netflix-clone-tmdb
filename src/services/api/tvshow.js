@@ -45,3 +45,12 @@ export function fetchDiscoverTvshows(pageNumber) {
         .then((data) => data.results)
         .catch((error) => console.error(error));
 }
+
+export function fetchSearchTvshow(query, pageNumber = 1) {
+    return fetch(
+        `https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&query=${query}&page=${pageNumber}&language=fr-FR&include_adult=false`
+    )
+        .then((response) => response.json())
+        .then((data) => data.results)
+        .catch((error) => console.error(error));
+}
