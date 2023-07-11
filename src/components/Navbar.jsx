@@ -1,11 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import reactLogo from '../assets/react.svg'
 import netflixLogo from '../assets/netflix-logo.png'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faBell, faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
-import {Link} from "wouter";
+import {Link, Redirect, useLocation} from "wouter";
 
 export default function Navbar() {
+    const [searchVisible, setSearchVisible] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [location, setLocation] = useLocation();
+
+    const handleSearchClick = () => {
+        setSearchVisible(true);
+    };
+
+    const handleSearchSubmit = () => {
+        setLocation('/recherche/' + searchQuery)
+    };
+
     return (
         <nav className="z-50 bg-zinc-900 px-6 md:px-14 py-6 flex flex-col md:flex-row items-center justify-between gap-4 sticky top-0 w-full">
 
@@ -35,10 +47,26 @@ export default function Navbar() {
                 </div>
 
                 <div className="flex items-center space-x-6">
-                    <FontAwesomeIcon
-                        className='h-6 w-6 text-white hover:text-gray-300 cursor-pointer'
-                        icon={faMagnifyingGlass}
-                    />
+                    {searchVisible ? (
+                        <form onSubmit={handleSearchSubmit} className="flex items-center gap-4">
+                            <input
+                                type="text"
+                                placeholder="Rechercher un film"
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                className="py-2 px-4 rounded bg-gray-200 text-gray-800 focus:outline-none"
+                            />
+                            <button type="submit" className="text-white hover:text-gray-300">
+                                Rechercher
+                            </button>
+                        </form>
+                    ) : (
+                        <FontAwesomeIcon
+                            className='h-6 w-6 text-white hover:text-gray-300 cursor-pointer'
+                            icon={faMagnifyingGlass}
+                            onClick={handleSearchClick}
+                        />
+                    )}
 
                     <FontAwesomeIcon
                         className='h-6 w-6 text-white hover:text-gray-300 cursor-pointer'
