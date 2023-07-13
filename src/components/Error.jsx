@@ -3,7 +3,7 @@ import { Link } from "wouter";
 
 export default function Error() {
     return (
-        <div className={'flex flex-col justify-center items-center text-center min-h-[100vh]'}>
+        <div className={'flex flex-col justify-center items-center text-center min-h-screen'}>
             <h1 className={'font-bold text-white text-4xl md:text-6xl mb-10'}>Erreur 404 : Page non trouvée</h1>
             <p className={'font-bold text-white text-2xl'}>Désolé, la page que vous recherchez n'a pas été trouvée.</p>
             <Link
