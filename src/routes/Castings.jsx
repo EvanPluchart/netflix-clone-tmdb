@@ -6,7 +6,7 @@ import ShowCastingDetail from "../components/ShowCastingDetail.jsx";
 import {fetchTvshowCredits} from "../services/api/tvshow.js";
 
 export default function Castings() {
-    const [match, { id }] = useRoute('/casting/:id?');
+    const [match, { id }] = useRoute('/:casting?/:id?');
     const [casting, setCasting] = useState(undefined);
     const [location, setLocation] = useLocation();
 

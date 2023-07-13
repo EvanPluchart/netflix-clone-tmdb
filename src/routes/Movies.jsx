@@ -12,7 +12,7 @@ import Loading from "../components/Loading.jsx";
 import MovieDetails from "../components/MovieDetails.jsx";
 
 export default function Movies() {
-    const [match, { movieId }] = useRoute('/films/:movieId?');
+    const [match, { movieId }] = useRoute('/:films?/:movieId?');
     const [movie, setMovie] = useState(undefined);
     const [cast, setCast] = useState(undefined);
     const [providers, setProviders] = useState(undefined);
