@@ -8,7 +8,7 @@ export default function ShowCastingDetail({ casting }) {
                 <h1 className={'text-xl text-white font-bold'}>Acteurs</h1>
                 <div className={'flex flex-col gap-2'}>
                     {casting.cast.map((actor) => (
-                        <ShowCastingActor actor={actor} />
+                        <ShowCastingActor key={actor.name} actor={actor} />
                     ))}
                 </div>
             </div>
@@ -17,7 +17,7 @@ export default function ShowCastingDetail({ casting }) {
                 <h1 className={'text-xl text-white font-bold'}>Equipe technique</h1>
                 <div className={'flex flex-col justify-center gap-2'}>
                     {casting.crew.map((actor) => (
-                        <ShowCastingActor actor={actor} />
+                        <ShowCastingActor key={actor.name + actor.credit_id} actor={actor} />
                     ))}
                 </div>
             </div>
