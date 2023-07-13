@@ -22,6 +22,9 @@ A list of technologies used within the project:
 
 ## Installation
 ***
+If oyu want to see the website you have two choices:
+1. You can go to [this link](https://tmdb-henna.vercel.app), the site is hosted on Vercel but have many problems with routes if you want to choose a specific route by changing the url.
+2. You can clone the project and run it on your computer.
 For this step, you'll need to have on your computer [NodeJS](https://nodejs.org/en/) and [Git](https://git-scm.com/downloads) installed. Then, follow these steps:
 ```
 $ git clone `link`
